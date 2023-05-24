@@ -5,6 +5,14 @@
 <%@ include file="/WEB-INF/views/include/navigation.jsp" %>
 <link rel="stylesheet" href="/resources/style/dogMain.css" type="text/css">
 </head>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	
+</script>
+
 <body>
 
 <div class="content">
@@ -20,89 +28,28 @@
 
 	<div class="goods_list">
 	
-		<div class="goods_img">
-			<a class="deail_goods" href="/shop/detail">
-			    <img class="main_img" src="resources/images/product/1.jpg">
-			    <p class="product_info goods_price">3,000원</p>
-			    <p class="product_info goods_name">하네스</p>
-			</a>
-		</div>
-		
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="views/resources/images/goods/1.jpg">
-		    <p class="product_info goods_price">2000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="views/resources/images/goods/1.jpg">
-		    <p class="product_info goods_price">2000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="views/resources/images/goods/1.jpg">
-		    <p class="product_info goods_price">2000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="views/resources/images/goods/1.jpg">
-		    <p class="product_info goods_price">2000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-	
-		
-	
+	<c:if test="${!empty list}">
+		<c:forEach var="product" items="${list}" varStatus="status">
+			<div class="goods_img">
+				<a class="deail_goods" href="/shop/detail">
+				    <img class="main_img" src="resources/images/product/1.jpg">
+			    	<p class="product_info goods_price">${product.productPrice}</p>
+			    	<p class="product_info goods_name">${product.productName}</p>
+				</a>
+			</div>
+		</c:forEach>
+	</c:if>
+			
+
 	</div>
 	
-	<div class="goods_list2">
-	
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="views/resources/images/goods/1.jpg">
-		    <p class="product_info goods_price">2000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-		
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="/resources/images/goods/2.jpg">
-		    <p class="product_info goods_price">1000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-		
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="/resources/images/goods/3.jpg">
-		    <p class="product_info goods_price">3000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-		
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="/resources/images/goods/3.jpg">
-		    <p class="product_info goods_price">3000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-		<div class="goods_img">
-			<a class="deail_goods">
-		    <img class="main_img" src="views/resources/images/goods/1.jpg">
-		    <p class="product_info goods_price">2000원</p>
-		    <p class="product_info goods_name">이름</p>
-			</a>
-		</div>
-	
-	</div>
+	<form name="productForm" id="productForm" method="post">
+			
+		<input type="hidden" name="productNo" id="productNo" value="${product.productNo}" />
+		<input type="hidden" name="productName" id="productName" value="${product.productName}" />
+		<input type="hidden" name="productPrice" id="productPrice" value="${product.productPrice}" />
+		<input type="hidden" name="productContent" id="productContent" value="${product.productContent}" />
+	</form>	
 </div>
 
 

@@ -73,6 +73,8 @@
             			<value>/kakao/payFail</value>
             			<value>/kakao/payCancel</value>
             			
+            			<value>/shop/productForm</value>
+            			<value>/shop/productProc</value>
             			<value>/shop/dogMain</value>
             			<value>/shop/detail</value>
             			

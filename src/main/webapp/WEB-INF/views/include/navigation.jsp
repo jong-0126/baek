@@ -9,19 +9,20 @@
 %>
 
 <div id="skipNav">
-    <a href="#">JiHoon's Webpage</a>
+    <a href="/index">JiHoon's Webpage</a>
 </div>
 <hr class="hidden" />
 
 <div id="wrap">
     <div id="header">
-        <h1 id="logo"><img src="" width="200" height="39" alt="Jihoon LOGO" /></h1>
+        <h1 id="logo"><a href="/index"><img src="/resources/images/logos/logo.png" width="75" height="70"/></a></h1>
         <h2 class="noVisible">메인메뉴</h2>
         <ul id="menu">
-            <li class="current"><a href="jh_main.html">HOME</a></li>
+            <li class="current"><a href="/index">HOME</a></li>
             <li><a href="/shop/dogMain">강아지</a></li>
             <li><a href="#">고양이</a></li>
             <li><a href="/qna/list">고객센터</a></li>
+            <li><a href="/shop/productForm" style="font-size: 15px;">상품 등록하기</a></li>
             <li><a href="#" style="font-size: 15px">장바구니 </a></li>
             <li><a href="#" style="font-size: 15px;">마이페이지</a></li>
 			<li><a href="/user/loginOut" style="font-size: 15px;">로그아웃</a></li>
@@ -38,13 +39,13 @@
 %>
 
 <div id="skipNav">
-    <a href="#">JiHoon's Webpage</a>
+    <a href="/index">JiHoon's Webpage</a>
 </div>
 <hr class="hidden" />
 
 <div id="wrap">
     <div id="header">
-        <h1 id="logo"><img src="" width="200" height="39" alt="Jihoon LOGO" /></h1>
+        <h1 id="logo"><a href="/index"><img src="/resources/images/logos/logo.png" width="75" height="70"/></a></h1>
         <h2 class="noVisible">메인메뉴</h2>
         <ul id="menu">
             <li class="current"><a href="/index">HOME</a></li>

@@ -13,7 +13,7 @@ public interface HiBoardDao {
 	public int boardInsert(HiBoard hiBoard);
 	
 	//게시물 첨부파일 등록
-	public int boardFileInsert(HiBoardFile hiBoardFiel);
+	public int boardFileInsert(HiBoardFile hiBoardFile);
 
 	//게시물 총 수
 	public long boardListCount(HiBoard hiBoard);
