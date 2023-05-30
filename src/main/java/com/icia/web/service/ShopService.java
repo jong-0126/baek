@@ -66,6 +66,21 @@ public class ShopService {
 		return count;
 	}
 	
+	public long productNoSelect(Product product)
+	{
+		long count = 0;
+		
+		try
+		{
+			count = shopDao.productNoSelect(product);
+		}
+		catch(Exception e)
+		{
+			logger.error("[ShopService] allProductCount Exception", e);
+		}
+		return count;
+	}
+	
 	//모든 상품 조회
 	public List<Product> allProductList(Product product)
 	{

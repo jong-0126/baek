@@ -27,6 +27,7 @@ public interface ShopDao {
 	//상품 파일 조회
 	public ProductFile productFileSelect (long productNo);	
 	
-	
+	//상품 넘버 조회
+	public long productNoSelect (Product product);
 
 }

@@ -55,20 +55,20 @@ public class ShopController {
 	@RequestMapping(value="/shop/dogMain")
 	public String list(ModelMap model, HttpServletRequest request, HttpServletResponse response) 
 	{
-		String cookieUserId = CookieUtil.getHexValue(request, AUTH_COOKIE_NAME);
 		
 		long curPage = HttpUtil.get(request, "curPage", (long)1);
 		
-		long productNo = HttpUtil.get(request, "productNo", (long)13);
 		
 		long totalCount = 0;
 		Paging paging = null;
 		List<Product> list = null;
 		Product product = new Product();
+		
+		long productNo = shopService.productNoSelect(product);
 		ProductFile productFile = shopService.productFileSelect(productNo);
 		
 		logger.debug("============================================================");
-		logger.debug("productNo :"+ productNo);
+		logger.debug("productNo :"+ totalCount);
 		logger.debug("============================================================");
 		
 		totalCount = shopService.allProductCount(product);

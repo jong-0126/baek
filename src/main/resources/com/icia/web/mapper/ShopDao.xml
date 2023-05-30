@@ -74,6 +74,11 @@ SELECT COUNT(PRODUCT_NO) AS CNT
   FROM TBL_PRODUCT
 </select>
 
+<select id="productNoSelect" parameterType="com.icia.web.model.Product" resultType="long">
+SELECT PRODUCT_NO
+  FROM TBL_PRODUCT
+</select>
+
 <!-- 모든 상품(강아지 메인페이지) 등록일 순으로-->
 <select id="allProductList" parameterType="com.icia.web.model.Product" resultMap="productResultMap">
 SELECT PRODUCT_NO,
