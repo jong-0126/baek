@@ -14,6 +14,12 @@ public class Product implements Serializable {
 	private String productRegDate;
 	private ProductFile productFile;	//첨부파일
 	
+	private long startRow;				
+	private long endRow;
+	
+	private String searchType;			//검색타입(1:이름, 2:제목, 3:내용)
+	private String searchValue;	
+	
 	public Product()
 	{
 		productNo = 0;
@@ -24,31 +30,9 @@ public class Product implements Serializable {
 		productRegDate = "";
 		productFile = null;	//hiboard의 시작 주소값만 가지고있는거
 		
-	}
-	
-	
-
-	public ProductFile getProductFile() {
-		return productFile;
+		
 	}
 
-
-
-	public void setProductFile(ProductFile productFile) {
-		this.productFile = productFile;
-	}
-
-
-
-	public String getProductContent() {
-		return productContent;
-	}
-
-
-
-	public void setProductContent(String productContent) {
-		this.productContent = productContent;
-	}
 
 	public long getProductNo() {
 		return productNo;
@@ -82,6 +66,14 @@ public class Product implements Serializable {
 		this.productPrice = productPrice;
 	}
 
+	public String getProductContent() {
+		return productContent;
+	}
+
+	public void setProductContent(String productContent) {
+		this.productContent = productContent;
+	}
+
 	public String getProductRegDate() {
 		return productRegDate;
 	}
@@ -89,5 +81,49 @@ public class Product implements Serializable {
 	public void setProductRegDate(String productRegDate) {
 		this.productRegDate = productRegDate;
 	}
+
+	public ProductFile getProductFile() {
+		return productFile;
+	}
+
+	public void setProductFile(ProductFile productFile) {
+		this.productFile = productFile;
+	}
+
+	public long getStartRow() {
+		return startRow;
+	}
+
+	public void setStartRow(long startRow) {
+		this.startRow = startRow;
+	}
+
+	public long getEndRow() {
+		return endRow;
+	}
+
+	public void setEndRow(long endRow) {
+		this.endRow = endRow;
+	}
+
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getSearchValue() {
+		return searchValue;
+	}
+
+	public void setSearchValue(String searchValue) {
+		this.searchValue = searchValue;
+	}
+	
+	
+
+	
 	
 }

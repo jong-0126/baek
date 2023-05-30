@@ -12,7 +12,7 @@
 	<result column="PRODUCT_REG_DATE" property="productRegDate" /> 
 </resultMap>
 
-<resultMap id = "productFlieResultMap" type="com.icia.web.model.ProductFile"> 
+<resultMap id = "productFileResultMap" type="com.icia.web.model.ProductFile"> 
 	<id column="PRODUCT_NO" property="productNo" />
 	<id column="FILE_SEQ" property="fileSeq" />
 	<result column="FILE_ORG_NAME" property="fileOrgName" />
@@ -68,4 +68,44 @@
 	)
 </insert>
 
+<!-- 모든 상품 수/강아지 메인 페이지 -->
+<select id="allProductCount" parameterType="com.icia.web.model.Product" resultType="long">
+SELECT COUNT(PRODUCT_NO) AS CNT
+  FROM TBL_PRODUCT
+</select>
+
+<!-- 모든 상품(강아지 메인페이지) 등록일 순으로-->
+<select id="allProductList" parameterType="com.icia.web.model.Product" resultMap="productResultMap">
+SELECT PRODUCT_NO,
+	   CATEGORY_CODE,
+	   PRODUCT_NAME,
+	   PRODUCT_PRICE,
+	   PRODUCT_REG_DATE,
+	   PRODUCT_CONTENT
+ FROM (SELECT ROWNUM AS RNUM,
+       PRODUCT_NO,
+	   CATEGORY_CODE,
+	   PRODUCT_NAME,
+	   PRODUCT_PRICE,
+	   PRODUCT_REG_DATE,
+       PRODUCT_CONTENT
+       FROM (SELECT PRODUCT_NO,
+               NVL(CATEGORY_CODE, '') AS CATEGORY_CODE,
+               NVL(PRODUCT_NAME, '') AS PRODUCT_NAME,
+               NVL(PRODUCT_PRICE, 0) AS PRODUCT_PRICE,
+               NVL(TO_CHAR(PRODUCT_REG_DATE, 'YYYY.MM.DD HH24:MI:SS'), '') AS PRODUCT_REG_DATE,
+               NVL(PRODUCT_CONTENT, '') AS PRODUCT_CONTENT
+	           FROM TBL_PRODUCT
+               ORDER BY PRODUCT_REG_DATE DESC))
+WHERE RNUM <![CDATA[>=]]> #{startRow}
+  AND RNUM <![CDATA[<=]]> #{endRow}
+</select>
+
+<!-- 상품 사진 찾기 -->
+<select id="productFileSelect" parameterType="long" resultMap="productFileResultMap">
+SELECT PRODUCT_NO,
+       NVL(FILE_NAME, '') AS FILE_NAME
+  FROM TBL_PRODUCT_FILE
+ WHERE PRODUCT_NO = #{value}
+</select>
 </mapper>

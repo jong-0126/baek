@@ -1,36 +1,41 @@
-
-
+/*goods.jsp 전체*/
 .content {
 flex-direction: row;
 margin-top: 10px;
+width: 81%;
 min-height: 30vh;
 margin: auto;
-
-
-
-
+margin-right: 150px;
+margin-left: 170px;
 }
-.catanier{
-	
+
+/*최신순, 판매량 순 등 옵션 */
+.option_list {
+margin-top: 30px;
+margin-left: 10px;
+}
+
+.option_sort {
+display: flex;
+justify-content: center;
+margin-top: 3vh;
 }
 
 .option {
 margin-left: 10px;
 text-decoration: none;
-font-size: 20px;
+font-size: 15px;
 font-weight: 700;
 line-height: 26px;
 color: #333;
 }
 
-.option_nav {
-  height: 70px;
-  margin-top: 100px;
-  line-height: 50px;
-  text-align: center;
-  display: flex;
-  border-bottom: 5px black;
+.option_sort a:active {
+font-weight: 900;
+color: #000;
+text-decoration: none;
 }
+
 
 
 /*이미지 리스트*/
@@ -39,34 +44,13 @@ display: flex;
 justify-content: space-between;
 width: 80vw;
 height: 50vh;
-/* width: 100%;
-height: 400px; */
-/* border: 1px solid black; */
 margin-top: 30px;
-}
-.goods_list2 {
-display: flex;
-justify-content: space-between;
-width: 80vw;
-height: 50vh;
-/* width: 100%;
-height: 400px; */
-/* border: 1px solid black; */
-margin-top: 0px;
 }
 
 .goods_img {
-/*border: 1px solid black;*/
 width: 218px;
 height: 400px;
 }
-
-.goods_img img{
-/*border: 1px solid black;*/
-width: 100%;
-margin: 0px;
-}
-
 
 .deail_goods {
 display:block;
@@ -76,20 +60,18 @@ overflow: hidden;
 }
 
 
-
 .deail_goods > img{
 overflow: hidden;
 transition:transform 0.5s;
 }
-
-
-
+/*
+.deail_goods:hover > img {
+transform: scale(1.2);
+}
+*/
 .main_img {
 width: 205px;
 height: 250px;
-/* width: 205px;
-height: 230px; */
-/* border: 1px solid #ccc; */
 margin: 5px;
 }
 
@@ -104,9 +86,65 @@ line-height: 26px;
 color: #333;
 }
 
+.goods_gender {
+font-weight: bold;
+font-size: large;
+display: inline;
+margin-top: 0px;
+margin-bottom: 0px;
+}
 
 .goods_price, .goods_name {
 margin-top: 0px;
 margin-bottom: 0px;
 }
+
+
+
+/***********************페이징***********************/
+
+/* 페이징 부분 시작 */
+.paginations {
+  list-style: none;
+  height: 5vh;
+  margin: auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.page-item{
+  float: left;
+  text-align: center;
+}
+
+.page-item a{
+  color: black;
+  padding: 1vw;
+  border: 0; 
+}
+
+.curPage {
+color: #fff;
+font-weight:bold;
+}
+
+.page-item.active a{
+ z-index: 1;
+ font-weight:bold;
+ background-color: rgb(255, 255, 255);
+ 
+}
+
+.page-item a:focus, .page-item a:hover{
+  font-weight: bold;
+  color:black;
+}
+.paginations .pg_num .now-item a{
+	font-weight: bold;
+}
+
+/* 페이징 부분 끝 */
 

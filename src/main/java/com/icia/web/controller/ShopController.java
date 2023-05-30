@@ -1,5 +1,7 @@
 package com.icia.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,8 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.icia.common.model.FileData;
 import com.icia.common.util.StringUtil;
-import com.icia.web.model.HiBoard;
-import com.icia.web.model.HiBoardFile;
+import com.icia.web.model.Paging;
 import com.icia.web.model.Product;
 import com.icia.web.model.ProductFile;
 import com.icia.web.model.Response;
@@ -39,17 +40,62 @@ public class ShopController {
 	@Value("#{env['upload.save.dir']}")
 	private String UPLOAD_SAVE_DIR;
 	
+	
 	@Autowired
 	private ShopService shopService;
 	
 	@Autowired
 	private UserService userService;
 	
+	private static final int LIST_COUNT = 20;		//한 페이지의 게시물 수
+	private static final int PAGE_COUNT = 5;		//페이징 수
+	
 	
 	//강아지 페이지
 	@RequestMapping(value="/shop/dogMain")
-	public String list(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+	public String list(ModelMap model, HttpServletRequest request, HttpServletResponse response) 
+	{
+		String cookieUserId = CookieUtil.getHexValue(request, AUTH_COOKIE_NAME);
 		
+		long curPage = HttpUtil.get(request, "curPage", (long)1);
+		
+		long productNo = HttpUtil.get(request, "productNo", (long)13);
+		
+		long totalCount = 0;
+		Paging paging = null;
+		List<Product> list = null;
+		Product product = new Product();
+		ProductFile productFile = shopService.productFileSelect(productNo);
+		
+		logger.debug("============================================================");
+		logger.debug("productNo :"+ productNo);
+		logger.debug("============================================================");
+		
+		totalCount = shopService.allProductCount(product);
+		
+		
+		if(totalCount > 0)
+		{
+			paging = new Paging("/shop/dogMain",totalCount, LIST_COUNT, PAGE_COUNT, curPage, "curPage");
+			paging.addParam("curPage", curPage);
+			
+			product.setStartRow(paging.getStartRow());
+			product.setEndRow(paging.getEndRow());
+			
+			
+			list = shopService.allProductList(product);
+			
+		} 
+		
+		model.addAttribute("list",list);
+		model.addAttribute("paging", paging);
+		model.addAttribute("curPage", curPage);
+		model.addAttribute("productFile",productFile);
+
+		
+		logger.debug("============================================================");
+		logger.debug("productFile :"+ productFile);
+		logger.debug("============================================================");
 		
 		return "/shop/dogMain";
 	
